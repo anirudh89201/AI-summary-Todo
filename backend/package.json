@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "tech assignment of Leucine",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "anirudh",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/web-api": "^7.9.2",
+    "@supabase/supabase-js": "^2.49.8",
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "openai": "^4.102.0",
+    "pg": "^8.16.0"
+  }
+}
