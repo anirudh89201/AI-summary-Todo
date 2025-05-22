@@ -194,4 +194,4 @@ The project can optionally be deployed using:
   ● (Optional) Deployed URL (if available)
 https://ai-summary-todo.vercel.app/
 
-![App Screenshot](./assets/Screenshot(316).png)
+![App Screenshot](frontend/Todo-Summary/src/assets/Slack_Photo.png)
