@@ -54,7 +54,7 @@ export const summarizeTodos = async (todos) => {
     throw new Error("No todos provided for summarization.");
   }
 
-  const prompt = `Summarize the following pending todos:\n\n${todos.map(t => `- ${t.title}: ${t.description}`).join('\n')}`;
+  const prompt = `Summarize the following pending todos into 50 words:\n\n${todos.map(t => `- ${t.title}: ${t.description}`).join('\n')}`;
 
   try {
     const response = await axios.post(
