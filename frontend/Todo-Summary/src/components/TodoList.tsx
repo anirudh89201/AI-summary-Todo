@@ -9,7 +9,7 @@ export const TodoList: React.FC = () => {
 
   const fetchTodos = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:3000/todos");
+        const response = await axios.get("https://ai-summary-todo.onrender.com:3000/todos");
         console.log(response.data);
         setTodos(response.data); 
       } catch (error) {
@@ -26,7 +26,7 @@ export const TodoList: React.FC = () => {
   const handleDelete = async (id: string | number | undefined) => {
     if(id==null) toast("No Id is present for the task..");
     try {
-      const response = await axios.delete(`http://127.0.0.1:3000/todos/${id}`);
+      const response = await axios.delete(`https://ai-summary-todo.onrender.com:3000/todos/${id}`);
       if (response.status === 200) {
         await fetchTodos();
         toast.success("Deleted Successfully..");
@@ -41,7 +41,7 @@ export const TodoList: React.FC = () => {
   const markAsCompleted = async(id: string | number | undefined) => {
     if(id==null) toast("No Id is present for the task..")
         try{
-        const response = await axios.patch(`http://127.0.0.1:3000/todos/${id}`);
+        const response = await axios.patch(`https://ai-summary-todo.onrender.com:3000/todos/${id}`);
         if(response.status == 200){
             toast("Updated Successfully");
             await fetchTodos();

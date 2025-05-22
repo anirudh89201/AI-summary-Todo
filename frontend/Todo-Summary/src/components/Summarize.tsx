@@ -36,7 +36,7 @@ export const Summarize = () => {
 
     try {
       setSlackLoading(true);
-      const response = await axios.post("http://127.0.0.1:3000/summarize/slack", { summary });
+      const response = await axios.post("https://ai-summary-todo.onrender.com/summarize/slack", { summary });
       if (response.status === 200) {
         toast("✅ Summary successfully sent to Slack!");
       } else {

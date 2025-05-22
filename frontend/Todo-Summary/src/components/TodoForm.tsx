@@ -15,7 +15,7 @@ export const TodoForm: React.FC = () => {
   };
 
   try {
-    const response = await axios.post('http://127.0.0.1:3000/todos', dict);
+    const response = await axios.post('https://ai-summary-todo.onrender.com:3000/todos', dict);
 
     if (response.status === 201) {
       toast("Successfully added");
