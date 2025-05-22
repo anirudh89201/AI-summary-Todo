@@ -11,11 +11,11 @@ export const Summarize = () => {
     const handleSummarizeTools = async () => {
       setLoading(true);
       try {
-        const getResponse = await axios.get("http://127.0.0.1:3000/summarize");
+        const getResponse = await axios.get("https://ai-summary-todo.onrender.com/summarize");
 
         if (getResponse.status === 200 && getResponse.data) {
           const todos = getResponse.data;
-          const postResponse = await axios.post("http://127.0.0.1:3000/summarize", { todos });
+          const postResponse = await axios.post("https://ai-summary-todo.onrender.com/summarize", { todos });
           if (postResponse.status === 200 && postResponse.data.summary) {
             setSummary(postResponse.data.summary);
           }
