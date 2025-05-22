@@ -193,3 +193,5 @@ The project can optionally be deployed using:
   [https://github.com/anirudh89201/AI-summary-Todo](https://github.com/anirudh89201/AI-summary-Todo)
   ● (Optional) Deployed URL (if available)
 https://ai-summary-todo.vercel.app/
+
+![App Screenshot](./assets/Screenshot(316).png)
