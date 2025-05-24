@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
-
+const backendurl = import.meta.env.VITE_APP_URL;
 export const Summarize = () => {
   const [loading, setLoading] = useState(false);
   const [summary, setSummary] = useState("");
@@ -11,11 +11,11 @@ export const Summarize = () => {
     const handleSummarizeTools = async () => {
       setLoading(true);
       try {
-        const getResponse = await axios.get("https://ai-summary-todo.onrender.com/summarize");
+        const getResponse = await axios.get(`${backendurl}/summarize`);
 
         if (getResponse.status === 200 && getResponse.data) {
           const todos = getResponse.data;
-          const postResponse = await axios.post("https://ai-summary-todo.onrender.com/summarize", { todos });
+          const postResponse = await axios.post(`${backendurl}/summarize`, { todos });
           if (postResponse.status === 200 && postResponse.data.summary) {
             setSummary(postResponse.data.summary);
           }
@@ -36,7 +36,7 @@ export const Summarize = () => {
 
     try {
       setSlackLoading(true);
-      const response = await axios.post("https://ai-summary-todo.onrender.com/summarize/slack", { summary });
+      const response = await axios.post(`${backendurl}/summarize/slack`, { summary });
       if (response.status === 200) {
         toast("✅ Summary successfully sent to Slack!");
         window.open("https://app.slack.com/client/T08TNBBQFPU/C08TPKMDRA8?entry_point=redirect_flow");

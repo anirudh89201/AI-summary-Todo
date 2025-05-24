@@ -10,7 +10,7 @@ const supabaseKey = process.env.SUPABASE_KEY
 export const supabase = createClient(supabaseUrl, supabaseKey)
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.options('*',cors())
 app.use('/todos', router);
 app.use("/summarize",Summarizerouter)
 app.get('/', (req, res) => {

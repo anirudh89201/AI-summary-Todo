@@ -3,13 +3,14 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import type { ITodoModel } from "../Models/TodoModel";
+const backendurl = import.meta.env.VITE_APP_URL;
 
 export const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<ITodoModel[]>([]);
 
   const fetchTodos = async () => {
       try {
-        const response = await axios.get("https://ai-summary-todo.onrender.com/todos");
+        const response = await axios.get(`${backendurl}/todos`);
         console.log(response.data);
         setTodos(response.data); 
       } catch (error) {
@@ -26,7 +27,7 @@ export const TodoList: React.FC = () => {
   const handleDelete = async (id: string | number | undefined) => {
     if(id==null) toast("No Id is present for the task..");
     try {
-      const response = await axios.delete(`https://ai-summary-todo.onrender.com/todos/${id}`);
+      const response = await axios.delete(`${backendurl}/todos/${id}`);
       if (response.status === 200) {
         await fetchTodos();
         toast.success("Deleted Successfully..");
@@ -41,7 +42,7 @@ export const TodoList: React.FC = () => {
   const markAsCompleted = async(id: string | number | undefined) => {
     if(id==null) toast("No Id is present for the task..")
         try{
-        const response = await axios.patch(`https://ai-summary-todo.onrender.com/todos/${id}`);
+        const response = await axios.patch(`${backendurl}/todos/${id}`);
         if(response.status == 200){
             toast("Updated Successfully");
             await fetchTodos();

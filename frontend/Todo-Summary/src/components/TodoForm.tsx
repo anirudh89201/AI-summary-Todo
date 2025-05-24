@@ -3,10 +3,12 @@ import type { ITodoModel } from '../Models/TodoModel';
 import axios from 'axios';
 import { toast,ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+const backendurl = import.meta.env.VITE_APP_URL;
 export const TodoForm: React.FC = () => {
   const navigate = useNavigate();
   const [RedirectButton,SetRedirectButton] = useState(false);
- const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+ 
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   const formElement = e.currentTarget; // ✅ Cache the form element
   const form = new FormData(formElement);
@@ -18,7 +20,7 @@ export const TodoForm: React.FC = () => {
   };
 
   try {
-    const response = await axios.post('https://ai-summary-todo.onrender.com/todos', dict);
+    const response = await axios.post(`${backendurl}/todos`, dict);
 
     if (response.status === 201) {
       toast("Successfully added");
