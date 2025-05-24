@@ -1,16 +1,16 @@
 import express from "express";
 import {
-    getTodos,
-    createTodo,
-    deleteTodo,
-    updateTodos,
-    GetPendingListTodos
+  getTodos,
+  createTodo,
+  deleteTodo,
+  updateTodos
 } from "../controllers/todoController.js";
 
 const router = express.Router();
 
-router.get('/', getTodos);          // GET /todos
-router.post('/', createTodo);       // POST /todos
-router.delete('/:id', deleteTodo);  // DELETE /todos/:id
-router.patch('/:id',updateTodos);
+router.get("/", getTodos);
+router.post("/", createTodo);
+router.delete("/:id", deleteTodo);
+router.patch("/:id", updateTodos);
+
 export default router;
