@@ -39,6 +39,7 @@ export const Summarize = () => {
       const response = await axios.post("https://ai-summary-todo.onrender.com/summarize/slack", { summary });
       if (response.status === 200) {
         toast("✅ Summary successfully sent to Slack!");
+        window.open("https://app.slack.com/client/T08TNBBQFPU/C08TPKMDRA8?entry_point=redirect_flow");
       } else {
         toast("❌ Failed to send summary to Slack.");
       }

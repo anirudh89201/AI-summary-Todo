@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { ITodoModel } from '../Models/TodoModel';
 import axios from 'axios';
 import { toast,ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 export const TodoForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [RedirectButton,SetRedirectButton] = useState(false);
  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   const formElement = e.currentTarget; // ✅ Cache the form element
@@ -20,6 +23,7 @@ export const TodoForm: React.FC = () => {
     if (response.status === 201) {
       toast("Successfully added");
       formElement.reset(); // ✅ Use cached form reference
+      SetRedirectButton(true);
     } else if (response.status === 401) {
       toast("Unauthorized: Unable to add Data");
     } else {
@@ -74,7 +78,20 @@ export const TodoForm: React.FC = () => {
                 </div>
 
                 <button type="submit" className="btn btn-primary w-100">Add Todo</button>
-              </form>
+            {RedirectButton && (
+          <button
+            type="button"
+            className="btn btn-success w-100 mt-3 d-flex align-items-center justify-content-center gap-2"
+            style={{ transition: "background-color 0.3s, transform 0.2s" }}
+            onClick={() => navigate('/')}
+            onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.02)"}
+            onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+          >
+            <i className="bi bi-house-door-fill"></i>
+            Go to Home Page
+          </button>
+        )}
+         </form>
             </div>
           </div>
         </div>
